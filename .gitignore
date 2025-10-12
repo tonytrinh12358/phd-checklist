@@ -1,0 +1,156 @@
+# PhD Checklist Project .gitignore
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary Files
+*.log
+*.tmp
+*.temp
+.cache/
+temp/
+tmp/
+
+# LaTeX Files (in case you use LaTeX for papers)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.dvi
+*.pdf
+*.ps
+*.eps
+
+# Research Data Files
+data/
+datasets/
+experiments/
+results/
+output/
+*.csv
+*.xlsx
+*.xls
+*.json
+*.pickle
+*.pkl
+
+# Python Files (if using Python for analysis)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# R Files (if using R for analysis)
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Node.js (if using any web tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Personal Notes and Drafts
+personal_notes/
+drafts/
+scratch/
+todo.txt
+notes.txt
+.personal/
+
+# Backup Files
+*.backup
+*.bak
+*_backup
+*_old
+
+# Lock Files
+*.lock
+Pipfile.lock
+package-lock.json
+yarn.lock
+
+# Archive and Compressed Files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large Media Files
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.m4v
+*.3gp
+*.wav
+*.mp3
+*.aac
+*.ogg
+*.wma
+*.flac
+
+# Keep important markdown files (they're the core of this project)
+# But ignore any private or draft versions
+*_private.md
+*_draft.md
+*_wip.md
