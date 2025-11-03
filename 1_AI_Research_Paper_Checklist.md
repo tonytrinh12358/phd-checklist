@@ -70,15 +70,30 @@ Completing this checklist prevents:
 
 *Why this matters: Helps reviewers understand contribution context, identifies right venues, and clarifies how your work advances multiple fields.*
 
-###  **Baseline Identification Strategy**
-- [ ] **"There will always be a baseline"** - identify all relevant baselines early in research planning (not after experiments)
-- [ ] **Multiple baseline categories** - consider baselines from different angles (direct competitors, adjacent methods, naive approaches)
-- [ ] **Baseline gaps analysis** - explicitly identify what existing baselines DON'T address that your work does
-- [ ] **Fair comparison protocol** - ensure baselines are evaluated on the same criteria as your method
-- [ ] **Baseline strengths acknowledgment** - honestly present what each baseline does well, not just their limitations
-- [ ] **Structured baseline comparison table** - create table showing what each baseline addresses and limitations
+###  **Comprehensive Baseline Strategy** ⚠️ CRITICAL
+*"There will always be a baseline" - identify all relevant baselines early in research planning (not after experiments)*
 
-*Why this matters: Comprehensive baseline comparison establishes novelty, demonstrates improvement, and satisfies reviewers. Missing obvious baselines is a common rejection reason.*
+- [ ] **Multi-category baseline coverage** - include baselines from different research angles:
+  - Direct competitors (methods solving the same problem)
+  - Adjacent methods (related techniques from neighboring domains)
+  - Ablation baselines (your method with components removed)
+  - Simple baselines (naive approaches to establish lower bounds)
+- [ ] **Exhaustive keyword search** - search for papers with ALL keyword variations:
+  - Example: For "prompt optimization" also search: "prompt tuning", "prompt learning", "prompt engineering", "instruction optimization", "instruction tuning"
+  - Use at least 5 different keyword combinations for your problem
+- [ ] **Current SOTA comparison** - compare against papers from the last 12 months
+- [ ] **ArXiv recency check** - check arXiv for relevant papers from the last 3 months
+- [ ] **Baseline gaps analysis** - explicitly identify what existing baselines DON'T address that your work does
+- [ ] **Structured baseline comparison table** - create table showing what each baseline addresses and limitations
+- [ ] **Fair comparison protocol** - ensure baselines are evaluated on the same criteria as your method
+- [ ] **Equal implementation care** - implement baselines with same rigor as your method:
+  - Same hyperparameter tuning effort
+  - Same computational budget
+  - Same data preprocessing and augmentation
+- [ ] **Published numbers vs. reimplementation** - if using published numbers, explain why; if reimplementing, document any differences
+- [ ] **Baseline strengths acknowledgment** - honestly present what each baseline does well, not just their limitations
+
+*Why this matters: Comprehensive baseline comparison establishes novelty, demonstrates improvement, and satisfies reviewers. Missing obvious baselines is a common rejection reason (25% of rejections).*
 
 ### 📌 **Universal Applicability Across AI Domains**
 
@@ -96,21 +111,19 @@ These principles apply regardless of your specific AI research area:
 
 ## 📝 Introduction Section
 
-###  **Supporting Evidence & References**
+###  **Claims & Evidence Strategy** ⚠️ CRITICAL
 - [ ] **Cite supporting papers** for all major arguments, especially in opening paragraphs
 - [ ] **Back claims with evidence** - if you claim existing approaches have problems, show qualitative examples
-- [ ] **Include variance analysis** in key figures (run experiments multiple times with different seeds)
-- [ ] **Comprehensive figure legends** and detailed captions for all figures
+- [ ] **Qualitative evidence** for comparative claims (show where existing methods fail vs. your approach succeeds)
+- [ ] **Map claims to experiments** - every performance claim in intro should have corresponding experimental validation planned
+- [ ] **Comprehensive evaluation metrics** - if claiming improvements in multiple dimensions, plan experiments for all of them
+- [ ] **Avoid unsupported claims** - only claim what you can experimentally validate
 
 ###  **Method Overview & Technical Details**
 - [ ] **Explain "HOW" not just "WHAT"** - don't just say what your method introduces, explain how it achieves it
 - [ ] **Include technical components** (e.g., LLM, Diffusion, DPO/SFT) with appropriate references
-- [ ] **Map claims to experiments** - every performance claim in intro should have corresponding experimental validation planned
-
-###  **Claims Validation Strategy**
-- [ ] **Qualitative evidence** for comparative claims (show where existing methods fail vs. your approach succeeds)
-- [ ] **Comprehensive evaluation metrics** - if claiming improvements in multiple dimensions, plan experiments for all of them
-- [ ] **Avoid unsupported claims** - only claim what you can experimentally validate
+- [ ] **Include variance analysis** in key figures (run experiments multiple times with different seeds)
+- [ ] **Comprehensive figure legends** and detailed captions for all figures
 
 ### ✅ **Venue Appropriateness & Positioning**
 - [ ] **Avoid "integrated" language** - for focused venues (e.g., CVPR), don't say "vision-integrated" as it implies the vision component is optional; use "vision-based" or "vision-driven" to emphasize the core focus
@@ -155,9 +168,13 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Establish relevance early** - each paragraph should make clear how these works relate to your paper and why they're insufficient
 
 ###  **Citation Best Practices**
+*Applies throughout paper: Introduction, Related Work, Methodology, and Experiments*
+
 - [ ] **Use appropriate citation formats**: `\citet` for in-text author mentions, `\cite` for parenthetical citations
 - [ ] **Remove redundant author names** by choosing correct citation commands
 - [ ] **Follow conference styling** for references and formatting requirements
+- [ ] **Cite all datasets** - provide citations for every dataset used in evaluation
+- [ ] **Cite all baselines** - provide citations for every baseline method mentioned
 - [ ] **Explain new concepts** - ensure any new concept has explanation or proper reference
 - [ ] **Past tense for authors, present for methods** - "Smith et al. proposed X" (past) but "Method X uses Y" (present)
 - [ ] **Multiple citations for broad claims** - when saying "approaches do X", cite multiple papers, not just one
@@ -181,7 +198,6 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Integrate theory with method** - don't have a separate "Theoretical Foundations" section before Method; integrate theory into the method description
 - [ ] **Method section structure** - within Method: (1) Problem Formalization, (2) Theoretical Foundations (with theorems), (3) Algorithm Description
 - [ ] **Single problem formulation** - have exactly one problem formulation section/paragraph, not multiple scattered throughout
-- [ ] **Proofs placement** - keep theorems in main text but move proofs to supplementary to save space
 - [ ] **Theory-algorithm connection** - when describing algorithm, explicitly reference how theorems inform design decisions
 
 ###  **Problem Formulation**
@@ -234,7 +250,7 @@ These principles apply regardless of your specific AI research area:
 
 ###  **Theorem & Mathematical Proofs**
 - [ ] **Limit theorems to 1-2** - keep only essential theorems in main text that deliver strong basis, move others to appendix
-- [ ] **Move proofs to appendix** - if there are many theorems, move all proofs to appendix for space efficiency
+- [ ] **Proofs placement** - keep theorems in main text but move proofs to supplementary/appendix to save space
 - [ ] **Reference theorems near their statement** - ideally in the same Method section where stated
 - [ ] **Provide proofs** - include proofs for all stated theorems (main text or appendix)
 - [ ] **Theorem relevance** - ensure each theorem directly supports your main contribution
@@ -261,49 +277,31 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Explain metric choice** - if using standard metrics, say "we use standard metrics [cite]" and explain any additional custom metrics
 - [ ] **Justify custom metrics** - if introducing new metrics, explain why they're needed beyond standard ones
 
+### ✅ **Experimental Rigor & Statistical Testing** ⚠️ CRITICAL
+- [ ] **Multiple datasets/benchmarks** - test on minimum 3 different datasets or benchmarks
+- [ ] **Multiple random seeds** - run experiments with minimum 3-5 different random seeds
+- [ ] **Error bars or confidence intervals** - report uncertainty on ALL quantitative results
+- [ ] **Statistical significance testing** - use appropriate tests (t-test, Wilcoxon, etc.)
+  - → See `REF_statistical_rigor.md` for choosing the right test, effect sizes, and reporting templates
+- [ ] **Cross-validation or proper train/val/test splits** - avoid data leakage and overfitting
+- [ ] **All claimed improvements must be tested** - don't claim improvements you haven't measured
+- [ ] **Multiple evaluation dimensions** if multiple benefits are claimed
+- [ ] **Ablation for each component** - systematically test the contribution of each proposed component
+
 ### ✅ **Writing Efficiency & Redundancy**
 - [ ] **Eliminate table caption redundancy** - don't repeat detailed results from tables in the running text; either discuss high-level insights or refer to the table
 - [ ] **Strategic sub-text usage** - table/figure sub-captions should add context, not duplicate what's in the main text
 - [ ] **Single discussion per result** - each result should be discussed once in the best location (either in text or caption), not both
 - [ ] **Cross-reference without repeating** - you can say "Table X shows..." to direct attention without repeating all numbers
 
-### ✅ **Comprehensive Evaluation**
-- [ ] **All claimed improvements must be tested** - don't claim improvements you haven't measured
-- [ ] **Multiple evaluation dimensions** if multiple benefits are claimed
-- [ ] **Statistical significance** - include error bars, multiple runs, proper statistical testing
-  - → See `REF_statistical_rigor.md` for test selection, effect sizes, and reporting templates
+### ✅ **Baseline Evaluation in Experiments**
+*Note: Baseline identification strategy is in "Pre-Research Definition" section above*
 
-### ✅ **Experimental Rigor** ⚠️ CRITICAL
-- [ ] **Multiple datasets/benchmarks** - test on minimum 3 different datasets or benchmarks
-- [ ] **Error bars or confidence intervals** - report uncertainty on ALL quantitative results
-- [ ] **Statistical significance testing** - use appropriate tests (t-test, Wilcoxon, etc.)
-  - → See `REF_statistical_rigor.md` for choosing the right test
-- [ ] **Multiple random seeds** - run experiments with minimum 3-5 different random seeds
-- [ ] **Ablation for each component** - systematically test the contribution of each proposed component
-- [ ] **Cross-validation or proper train/val/test splits** - avoid data leakage and overfitting
-
-### ✅ **Comprehensive Baseline Strategy**
-- [ ] **Multi-category baseline coverage** - include baselines from different research angles:
-  - Direct competitors (methods solving the same problem)
-  - Adjacent methods (related techniques from neighboring domains)
-  - Ablation baselines (your method with components removed)
-  - Simple baselines (naive approaches to establish lower bounds)
+- [ ] **Multi-category baseline coverage** - ensure implementation covers all baseline categories identified during research planning
 - [ ] **Baseline comparison table** - create a structured comparison showing what each baseline addresses and doesn't address
 - [ ] **Novelty gap articulation** - explicitly show what gap your work fills that no baseline covers
 - [ ] **Fair evaluation protocol** - ensure all methods are evaluated on the same metrics and datasets
 - [ ] **Baseline limitations analysis** - discuss both strengths and weaknesses of each baseline honestly
-
-### ✅ **Baseline Comprehensiveness** ⚠️ CRITICAL
-- [ ] **Exhaustive keyword search** - search for papers with ALL keyword variations:
-  - Example: For "prompt optimization" also search: "prompt tuning", "prompt learning", "prompt engineering", "instruction optimization", "instruction tuning"
-  - Use at least 5 different keyword combinations for your problem
-- [ ] **Current SOTA comparison** - compare against papers from the last 12 months
-- [ ] **ArXiv recency check** - check arXiv for relevant papers from the last 3 months
-- [ ] **Equal implementation care** - implement baselines with same rigor as your method:
-  - Same hyperparameter tuning effort
-  - Same computational budget
-  - Same data preprocessing and augmentation
-- [ ] **Published numbers vs. reimplementation** - if using published numbers, explain why; if reimplementing, document any differences
 
 ### ✅ **Generic Framework Validation**
 - [ ] **Dataset generalization** - if using abstract notation, test on multiple datasets
@@ -331,10 +329,46 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Active voice for findings** - emphasize your method's achievements rather than passive figure descriptions
 - [ ] **Connect results to claims** - explicitly link experimental results back to introduction claims
 
-### ✅ **Figure & Visual Quality**
+## 📐 **Figures, Tables & Visual Elements**
+
+### ✅ **Figure Quality & Design**
 - [ ] **Professional figures** with legends, proper captions, error bars
 - [ ] **Multiple experimental runs** for key results
 - [ ] **Visual organization** that supports the textual organization (color coding, module grouping)
+- [ ] **Eye-friendly color schemes** - use industry-standard, accessible colors for any color-coded elements
+- [ ] **Large, readable text** - ensure text in charts and tables is sufficiently large for readability
+- [ ] **Vector format preferred** - all figures should be vector format (PDF) with readable fonts
+- [ ] **Annotations and visual enhancement** - add annotations, images, and visual elements to make figures more engaging
+- [ ] **Computer vision specific visuals** - include sample images, visual comparisons, and annotated examples for CV research
+
+### ✅ **Tables & Data Presentation**
+- [ ] **Remove tiny confidence intervals** - if CI values are very small (close to zero), remove to save space
+  - → See `REF_statistical_rigor.md` for proper CI calculation and reporting
+- [ ] **Table clarity** - ensure all table elements are clearly labeled and explained
+- [ ] **Space efficiency** - optimize table formatting for maximum information density
+- [ ] **Hyperparameter tables** - create dedicated tables for key parameters (epochs, batch size, learning rates)
+- [ ] **Visual engagement** - make tables more visual and engaging, especially for computer vision research
+
+### ✅ **Strategic Visual Elements - Method Section**
+- [ ] **Module-flow diagrams** - small diagrams showing information flow between method components
+- [ ] **Complexity progression examples** - show how method handles different complexity levels
+- [ ] **Bias-mitigation illustration** (if applicable) - before/after comparison
+
+### ✅ **Strategic Visual Elements - Experiments Section**
+- [ ] **Hyperparameter summary table**
+- [ ] **Dataset distribution visualization** (pie/bar chart)
+
+### ✅ **Strategic Visual Elements - Results Section**
+- [ ] **Ablation visualizations** - bar charts or plots showing impact of different components
+- [ ] **Qualitative success/failure grids** - side-by-side comparisons showing method improvements
+- [ ] **Data efficiency plots** - line plots showing performance vs. training data amount
+- [ ] **Computation vs. quality trade-offs** - scatter plots showing efficiency benefits
+
+### ✅ **Visual Elements Integration**
+- [ ] **Figure density** - appropriate number of visuals for paper length (3-4 key figures for 7-8 page paper)
+- [ ] **Visual narrative** - figures tell a coherent story that supports the text
+- [ ] **Space optimization** - visuals use space efficiently (`\columnwidth` vs `figure*`)
+- [ ] **Annotated visualizations** - add clear annotations to before/after comparisons and violation/correction figures
 
 ## 📐 **Formatting & Presentation**
 
@@ -350,27 +384,6 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Use indent bold strategically** - apply `\indent\textbf{}` where appropriate to save space
 - [ ] **Spacing adjustments** - reduce spacing between paragraphs when necessary for length constraints
 - [ ] **Format efficiency** - optimize LaTeX commands for maximum space utilization
-
-###  **Tables & Data Presentation**
-- [ ] **Remove tiny confidence intervals** - if CI values are very small (close to zero), remove to save space
-  - → See `REF_statistical_rigor.md` for proper CI calculation and reporting
-- [ ] **Table clarity** - ensure all table elements are clearly labeled and explained
-- [ ] **Space efficiency** - optimize table formatting for maximum information density
-- [ ] **Hyperparameter tables** - create dedicated tables for key parameters (epochs, batch size, learning rates)
-- [ ] **Large, readable text** - ensure text in charts and tables is sufficiently large for readability
-- [ ] **Visual engagement** - make tables more visual and engaging, especially for computer vision research
-
-###  **Strategic Visual Elements** 
-- [ ] **Module-flow diagrams** - small diagrams showing information flow between method components
-- [ ] **Complexity progression examples** - show how method handles different complexity levels
-- [ ] **Ablation visualizations** - bar charts or plots showing impact of different components
-- [ ] **Qualitative success/failure grids** - side-by-side comparisons showing method improvements
-- [ ] **Data efficiency plots** - line plots showing performance vs. training data amount
-- [ ] **Computation vs. quality trade-offs** - scatter plots showing efficiency benefits
-- [ ] **Eye-friendly color schemes** - use industry-standard, accessible colors for any color-coded elements
-- [ ] **Annotations and visual enhancement** - add annotations, images, and visual elements to make figures more engaging
-- [ ] **Computer vision specific visuals** - include sample images, visual comparisons, and annotated examples for CV research
-- [ ] **Large figure text** - ensure all text in figures and charts is appropriately sized and readable
 
 ## 🎯 Pre-Submission Final Check
 
@@ -406,13 +419,6 @@ These principles apply regardless of your specific AI research area:
 - [ ] **Assumption verification** - no unstated assumptions about reader's background knowledge
 - [ ] **Progressive complexity** - concepts build logically from simple to complex
 - [ ] **Grandmother test compliance** - non-expert could follow the main narrative
-
-###  **Visual Elements Integration**
-- [ ] **Figure density** - appropriate number of visuals for paper length (3-4 key figures for 7-8 page paper)
-- [ ] **Visual narrative** - figures tell a coherent story that supports the text
-- [ ] **Space optimization** - visuals use space efficiently (`\columnwidth` vs `figure*`)
-- [ ] **Quality standards** - all figures are vector format (PDF) with readable fonts
-- [ ] **Annotated visualizations** - add clear annotations to before/after comparisons and violation/correction figures
 
 ###  **Technical Compilation & Formatting**
 - [ ] **LaTeX compilation** - compile document and fix all compilation errors
@@ -517,31 +523,7 @@ If your paper gets rejected:
 
 ---
 
-## 📋 **Quick Visual Elements Checklist**
-*Based on the "shopping list" approach - choose 3-4 high-impact visuals:*
-
-**METHOD SECTION:**
-- [ ] Module-flow diagram (information flow overview)
-- [ ] Complexity-ladder examples (basic → intermediate → advanced)
-- [ ] Bias-mitigation illustration (before/after comparison)
-
-**EXPERIMENTS SECTION:**
-- [ ] Hyperparameter summary table
-- [ ] Dataset distribution visualization (pie/bar chart)
-
-**RESULTS SECTION:**
-- [ ] Ablation bar chart (component impact)
-- [ ] Data-efficiency line plot (performance vs. training data)
-- [ ] Qualitative failure/success grid (visual comparisons)
-- [ ] Computation vs. quality scatter plot (efficiency message)
-
----
-
-*Remember: The goal is completeness first, then compression through revision. Better to have a thorough 8-page draft that gets compressed to 7 pages than a sparse 6-page draft that lacks crucial details.* 
-
----
-
-## ⏱️ **Time Allocation for Checklist**
+## 📋 **Time Allocation for Checklist**
 
 ### Research Planning Phase (use this BEFORE experiments)
 - **Pre-Research Definition Checklist**: 2-4 hours (save months of directionless work)
@@ -567,5 +549,11 @@ Most rejection-causing issues originate in research planning, not paper writing:
 | Baseline identification | Experiment design phase | Missing comparisons (25% of rejections) |
 
 **⚠️ Use this checklist as a research planning tool, not just a writing guide.**
+
+---
+
+## 💡 **Final Reminder**
+
+*The goal is completeness first, then compression through revision. Better to have a thorough 8-page draft that gets compressed to 7 pages than a sparse 6-page draft that lacks crucial details.*
 
 *Updated: November 2025* 
